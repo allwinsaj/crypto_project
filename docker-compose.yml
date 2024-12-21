@@ -1,0 +1,29 @@
+version: "3.8"
+
+services:
+  flask_app:
+    build: .
+    command: flask run --host=0.0.0.0 --port=5000
+    ports:
+      - "5001:5000"
+    volumes:
+      - ./crypto_project:/app  #nt your local code to the container
+    environment:
+      FLASK_ENV: development
+      FLASK_APP: crypto_project.crypto_project.coinapp.py
+      MONGO_URI: mongodb://mongo:27017/crypto_db
+    depends_on:
+      - mongo
+    networks:
+      - app-network
+
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
