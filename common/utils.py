@@ -7,6 +7,8 @@ from flask import request
 from oslo_config import cfg
 from werkzeug.wrappers import Response
 
+from definitions import Status
+from definitions import StatusCode
 from common.mongo_adapter import DatabaseAdapter
 
 
@@ -15,40 +17,40 @@ class RestResponses:
     def success(message: str,
                 /,
                 *,
-                status="success",
+                status=Status.SUCCESS,
                 data: Any = None) -> Response:
         body = {
             "status": status,
             "message": message,
             "data": data
         }
-        return make_response(body, 200)
+        return make_response(body, StatusCode.SUCCESS)
 
     @staticmethod
     def bad_request(message: str,
                     /,
                     *,
-                    status="failed",
+                    status=Status.FAILED,
                     data: Any = None) -> Response:
         body = {
             "status": status,
             "message": message,
             "data": data
         }
-        return make_response(body, 400)
+        return make_response(body, StatusCode.BAD_REQUEST)
 
     @staticmethod
     def unauthorized(message: str,
                      /,
                      *,
-                     status="unauthorized",
+                     status=Status.UNAUTHORIZED,
                      data: Any = None) -> Response:
         body = {
             "status": status,
             "message": message,
             "data": data
         }
-        return make_response(body, 401)
+        return make_response(body, StatusCode.UNAUTHORIZED)
 
 
 def authenticate(func):

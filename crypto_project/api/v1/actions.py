@@ -58,7 +58,7 @@ class CoinDetails:
 
     def get_coin_categories(self) -> Response:
         data = self.db.get_distinct("categories", query={})
-        return RestResponses.success("Categories retrieved Successfully", data={"categories":data})
+        return RestResponses.success("Categories retrieved Successfully", data={"categories": data})
 
     def specific_coins_details(self,
                                req_body: dict):

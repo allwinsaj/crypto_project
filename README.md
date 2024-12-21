@@ -17,8 +17,8 @@ This project is designed to fetch, store, and serve cryptocurrency data using th
 Pull the code from the GitHub repository:
 ```bash
 # Example:
-git clone https://github.com/your-repo/crypto-coins.git
-cd crypto-coins
+git clone git@github.com:allwinsaj/crypto_project.git
+cd crypto_project
 ```
 
 ### Step 2: Build and Run Docker Containers
@@ -79,7 +79,7 @@ The application fetches cryptocurrency data from the CoinGecko API and stores it
 The application provides user authentication via JWT (JSON Web Token).
 
 #### Available Endpoints:
-1. **Signup API**: `POST /v1/auth/signup`
+1. **Signup API**: `POST /v1/signup`
    - Create a new user by providing `username`, `email`, and `password`.
 
 2. **Login API**: `POST /v1/auth/login`

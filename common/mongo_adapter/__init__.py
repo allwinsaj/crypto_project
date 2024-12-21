@@ -1,7 +1,6 @@
 from oslo_config import cfg
 
 
-
 class DatabaseAdapter(object):
     def __init__(self,
                  /,
@@ -21,9 +20,8 @@ class DatabaseAdapter(object):
     def connect_database(self):
         try:
             # if self.__username and self.__password and self.__auth_database:
-            #     uri = f"mongodb://{self.__username}:{self.__password}@{self.__host}:{self.__port}{self.__host}/{self.__auth_database}"
+            #     uri = f"mongodb://{self.__username}:{self.__password}@mongodb:{self.__port}/{self.__auth_database}"
             # else:
-            # uri = f"mongodb://{self.__host}:{self.__port}"
             uri = f"mongodb://mongodb:{self.__port}"
             from pymongo import MongoClient
             client = MongoClient(uri)
